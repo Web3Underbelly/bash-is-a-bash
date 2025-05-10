@@ -1,15 +1,7 @@
 [project]
 name = "bash-is-a-bash"
 version = "0.1.0"
-description = "Add your description here"
+description = "A fun interactive way to master the command line"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = [
-    "openai>=1.78.0",
-]
-
-[dependency-groups]
-dev = [
-    "pytest>=8.3.5",
-    "ruff>=0.11.9",
-]
+dependencies = []
