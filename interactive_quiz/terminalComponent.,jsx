@@ -1,0 +1,21 @@
+
+import { useEffect, useRef } from 'react';
+import { Terminal } from 'xterm';
+import io from 'socket.io-client';
+
+export default function TerminalComponent() {
+  const termRef = useRef();
+  useEffect(() => {
+    const socket = io();
+    const term = new Terminal();
+    term.open(termRef.current);
+
+    term.onData(data => {
+      socket.emit('pty_input', { input: data });
+    });
+    socket.on('pty_output', msg => {
+      term.write(msg.output);
+    });
+  }, []);
+  return <div ref={termRef} className="h-full w-full" />;
+}
